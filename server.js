@@ -13,7 +13,7 @@ const app = express()
 const router = express.Router()
 
 //Imports Route Files
-const UserRoutes = require('./Routes/Users.Routes')(router, SM)
+const AuthRoutes = require('./Routes/Auth.Routes')(router, SM)
 
 //Session Manager
 app.use(session(SM.Options()))
@@ -36,7 +36,7 @@ app.engine('handlebars',exphbs({
 
 app.set('view engine','handlebars')
 
-app.use('/', UserRoutes)
+app.use('/', AuthRoutes)
 
 Handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
 
@@ -86,5 +86,5 @@ Handlebars.registerHelper('dateFormat', function (date, options) {
 });
 
 app.listen(process.env.PORT, ()=>{
-    console.log(">> ML-WebClient-SVC Running on Port %s",process.env.PORT)
+    console.log(">> MX-Core-Weblient Running on Port %s",process.env.PORT)
 })
